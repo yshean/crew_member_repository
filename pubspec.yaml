@@ -8,7 +8,11 @@ environment:
 
 dependencies:
   spacex_api:
-    path: ../spacex_api
+    # See spacex_demo repository's pubspec.yaml for more info
+    # path: ../spacex_api
+    git:
+      url: https://github.com/yshean/spacex_api.git
+      ref: main
 
 dev_dependencies:
   mocktail: ^0.3.0
