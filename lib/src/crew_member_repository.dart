@@ -1,7 +1,15 @@
 import 'package:spacex_api/spacex_api.dart';
 
+/// {@template crew_members_exception}
 /// Thrown when an error occurs while looking up the crew members
-class CrewMembersException implements Exception {}
+/// /// {@endtemplate}
+class CrewMembersException implements Exception {
+  ///  {@macro crew_members_exception}
+  CrewMembersException({this.message});
+
+  /// The error message
+  final String? message;
+}
 
 /// {@template crew_member_repository}
 /// A Dart package to manage the crew domain
@@ -24,8 +32,8 @@ class CrewMemberRepository {
       crewMembers.sort((a, b) => a.name.compareTo(b.name));
 
       return crewMembers;
-    } on Exception {
-      throw CrewMembersException();
+    } on Exception catch (e) {
+      throw CrewMembersException(message: e.toString());
     }
   }
 }
